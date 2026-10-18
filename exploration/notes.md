@@ -38,3 +38,16 @@ The `pays` column mixes real countries with aggregate rows. Full list of aggrega
 
 **Real countries:** [total distinct `pays` values] − [number of aggregates] = **[number] countries**
 
+## Sanity check: how is "World" built?
+Compared on 09/03/2023 using a PivotTable (sum of `cas_cumules`):
+
+- Sum of real countries: 676,466,635
+- World: 676,467,356
+- Gap: 721 = exactly the value of **International** on that date
+
+**Conclusion:** World = sum of real countries + International. Continents, the EU and income groups are alternative groupings of the same total, so adding them together would count the same people several times. Excluding the aggregates from the fact table loses no information.
+
+## Next steps
+- Design the star schema (Dim_Date, Dim_Pays, Fait_Pandemie)
+- Find a population source and note country-name mismatches
+- Build the Talend ETL
