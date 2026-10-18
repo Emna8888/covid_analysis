@@ -216,3 +216,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Raw data (too heavy, document the source in the README instead)
+data/
+*.csv
+*.xlsx
+
+# Talend generated files
+.Java/
+*.log
+
+# Power BI temp files
+*.pbix.tmp
+.pbi/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
