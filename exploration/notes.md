@@ -26,15 +26,15 @@ This makes sense for cumulative-style columns, but there are also isolated missi
 - No formatting inconsistencies found yet in date or country fields.
 
 ## `pays` column — non-country rows found
-The `pays` column mixes real countries with aggregate/rollup/flawed entries:
-- **Continent aggregates:** Africa, Asia, Europe confirmed (others to verify)
-- **"International"** — likely cases not attributable to a specific country's health system (e.g. cruise ships, repatriation)
-- **"World"** — global total across all countries + continents
-- **"Israel** — relabel to Occupied Palestine instead
+The `pays` column mixes real countries with aggregate rows. Full list of aggregates found via a PivotTable on `pays`:
 
-**Decision:** exclude all non-country rows (continents, International, World) from the fact table during ETL+relabeling Israel to Occupied Palestine. Continent-level views, if needed later, will be derived in Power BI by grouping actual countries — not by trusting the source's pre-aggregated rows.
+- **Continents (6):** Africa, Asia, Europe, North America, South America, Oceania (Antarctica is absent from the data)
+- **European Union:** regional aggregate, a subset of Europe
+- **Income groups ([4]):** [High income, Upper middle income,Lower middle income,Low income ...]
+- **International:** cases not attributable to any country (e.g. cruise ships)
+- **World:** global total
 
-## Next steps
-- Verify remaining continents (Americas, Oceania) for the same aggregate pattern
-- Confirm "World" = sum of all real countries (sanity check on a given date)
-- Move to star schema design (Dim_Date, Dim_Pays, Fait_Pandemie)
+**Decision:** exclude all aggregate rows from the fact table during ETL. Continent-level views, if needed, will be derived in Power BI by grouping real countries, not by trusting the source's pre-aggregated rows.
+
+**Real countries:** [total distinct `pays` values] − [number of aggregates] = **[number] countries**
+
