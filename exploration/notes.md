@@ -47,7 +47,8 @@ Compared on 09/03/2023 using a PivotTable (sum of `cas_cumules`):
 
 **Conclusion:** World = sum of real countries + International. Continents, the EU and income groups are alternative groupings of the same total, so adding them together would count the same people several times. Excluding the aggregates from the fact table loses no information.
 
-## Next steps
-- Design the star schema (Dim_Date, Dim_Pays, Fait_Pandemie)
-- Find a population source and note country-name mismatches
-- Build the Talend ETL
+## Population enrichment
+- Source: Our World in Data, population-unwpp (UN WPP 2024), historical estimates
+- Reference year: 2021, treated as constant over 2020–2023 (simplification stated in the report)
+- Name mismatches (2 of 218): Faeroe Islands → Faroe Islands, Timor → East Timor
+- Coverage after mapping: 218/218 countries have a population
