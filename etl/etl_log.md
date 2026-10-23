@@ -23,3 +23,8 @@
 - Decision: data kept as loaded (NULLs stay NULLs); handled in the DAX layer (MAX/last date for cumulative columns)
 - All 187 cumulative-case decreases coincide with a NULL nouveaux_cas (the source blanks the daily value when it corrects a total)
 - The 2 NULL cas_cumules are early rows (United Kingdom 2020-01-30, Sudan 2020-03-13), not on the final date
+
+## Master job (job_master_etl)
+- Truncates fait_pandemie, dim_pays, dim_temps (RESTART IDENTITY), then runs job_dim_temps → job_dim_pays → job_fait_pandemie (OnSubjobOk triggers)
+- Full rebuild validated: dim_temps 1,143 | dim_pays 218 | fait_pandemie 233,593 | SUM(cas_cumules) on 2023-03-09 = 676,466,635
+- Harmless warnings in the console: empty `Year` values in the population file (rows that are not used)
