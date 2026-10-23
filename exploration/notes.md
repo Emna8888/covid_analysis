@@ -52,3 +52,4 @@ Compared on 09/03/2023 using a PivotTable (sum of `cas_cumules`):
 - Reference year: 2021, treated as constant over 2020–2023 (simplification stated in the report)
 - Name mismatches (2 of 218): Faeroe Islands → Faroe Islands, Timor → East Timor
 - Coverage after mapping: 218/218 countries have a population
+
