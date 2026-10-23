@@ -21,3 +21,5 @@
 - NULLs: nouveaux_cas 271 (0.12%), nouveaux_deces 19,825 (8.5%), cas_cumules 2, deces_cumules 19,562 (8.4%), cas_hebdomadaires 1,410 (0.6%), cas_bihebdomadaires 3,072 (1.3%)
 - Likely explanations: deaths blank before a country's first reported death; weekly/biweekly windows undefined at the start of each series; daily value blanked when the source corrects a cumulative total
 - Decision: data kept as loaded (NULLs stay NULLs); handled in the DAX layer (MAX/last date for cumulative columns)
+- All 187 cumulative-case decreases coincide with a NULL nouveaux_cas (the source blanks the daily value when it corrects a total)
+- The 2 NULL cas_cumules are early rows (United Kingdom 2020-01-30, Sudan 2020-03-13), not on the final date
