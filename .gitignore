@@ -234,3 +234,5 @@ data/
 .DS_Store
 Thumbs.db
 .vscode/
+
+etl/*.zip
