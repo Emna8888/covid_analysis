@@ -236,3 +236,5 @@ Thumbs.db
 .vscode/
 
 etl/*.zip
+
+.venv/
